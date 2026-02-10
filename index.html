@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DSU Feedback Wall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>DSU Feedback Wall</h1>
+
+<h2>Post Feedback</h2>
+<input id="name" placeholder="Your Name"><br>
+
+<select id="category">
+  <option>Canteen</option>
+  <option>Labs</option>
+  <option>Classrooms</option>
+  <option>Transport</option>
+  <option>Admin</option>
+</select><br>
+
+<textarea id="message" placeholder="Write feedback"></textarea><br>
+<button onclick="addFeedback()">Submit</button>
+
+<h2>Feedback Wall</h2>
+<div id="wall"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
