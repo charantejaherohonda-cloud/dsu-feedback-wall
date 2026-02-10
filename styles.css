@@ -1,15 +1,30 @@
-body {
-  font-family: Arial;
-  margin: 30px;
+function addFeedback() {
+  let name = document.getElementById("name").value;
+  let category = document.getElementById("category").value;
+  let message = document.getElementById("message").value;
+
+  if (message === "") {
+    alert("Please write feedback");
+    return;
+  }
+
+  let feedback = { name, category, message, likes: 0 };
+
+  let all = JSON.parse(localStorage.getItem("data")) || [];
+  all.push(feedback);
+  localStorage.setItem("data", JSON.stringify(all));
+
+  showFeedback();
 }
 
-textarea {
-  width: 300px;
-  height: 80px;
-}
+function showFeedback() {
+  let wall = document.getElementById("wall");
+  wall.innerHTML = "";
 
-.card {
-  border: 1px solid gray;
-  padding: 10px;
-  margin: 10px 0;
-}
+  let all = JSON.parse(localStorage.getItem("data")) || [];
+
+  all.forEach((f, i) => {
+    wall.innerHTML += `
+      <div class="card">
+        <b>${f.category}</b><br>
+        ${f.mess…
