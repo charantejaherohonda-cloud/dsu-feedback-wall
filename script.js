@@ -1,40 +1,52 @@
-function addFeedback() {
-  let name = document.getElementById("name").value;
-  let category = document.getElementById("category").value;
-  let message = document.getElementById("message").value;
-
-  let feedback = { name, category, message, likes: 0 };
-
-  let all = JSON.parse(localStorage.getItem("data")) || [];
-  all.push(feedback);
-  localStorage.setItem("data", JSON.stringify(all));
-
-  showFeedback();
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
 }
 
-function showFeedback() {
-  let wall = document.getElementById("wall");
-  wall.innerHTML = "";
-
-  let all = JSON.parse(localStorage.getItem("data")) || [];
-
-  all.forEach((f, i) => {
-    wall.innerHTML += `
-      <div class="card">
-        <b>${f.category}</b><br>
-        ${f.message}<br>
-        <small>- ${f.name}</small><br>
-        <button onclick="like(${i})">👍 ${f.likes}</button>
-      </div>
-    `;
-  });
+.container {
+  width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-function like(index) {
-  let all = JSON.parse(localStorage.getItem("data"));
-  all[index].likes++;
-  localStorage.setItem("data", JSON.stringify(all));
-  showFeedback();
+h1, h2 {
+  text-align: center;
 }
 
-showFeedback();
+input, select, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  height: 80px;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+.card {
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 12px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
