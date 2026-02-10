@@ -1,45 +1,59 @@
-function addFeedback() {
-  let name = document.getElementById("name").value;
-  let category = document.getElementById("category").value;
-  let message = document.getElementById("message").value;
+const API = "http://localhost:5000";
 
-  if (message === "") {
-    alert("Please write feedback");
-    return;
-  }
-
-  let feedback = { name, category, message, likes: 0 };
-
-  let all = JSON.parse(localStorage.getItem("data")) || [];
-  all.push(feedback);
-  localStorage.setItem("data", JSON.stringify(all));
-
-  showFeedback();
+function openModal() {
+  document.getElementById("modal").style.display = "block";
 }
 
-function showFeedback() {
-  let wall = document.getElementById("wall");
-  wall.innerHTML = "";
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 
-  let all = JSON.parse(localStorage.getItem("data")) || [];
+function loadFeedback() {
+  fetch(${API}/feedback)
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById("feedbackList");
+      list.innerHTML = "";
 
-  all.forEach((f, i) => {
-    wall.innerHTML += `
-      <div class="card">
-        <b>${f.category}</b><br>
-        ${f.message}<br>
-        <small>- ${f.name || "Anonymous"}</small><br>
-        <button onclick="like(${i})">👍 ${f.likes}</button>
-      </div>
-    `;
+      data.forEach(f => {
+        list.innerHTML += `
+          <div class="card">
+            <h3>${f.title}</h3>
+            <p>${f.description}</p>
+
+            <div class="meta">
+              <span class="badge">${f.category}</span>
+              <span class="badge status">${f.status}</span>
+            </div>
+
+            <button class="upvote" onclick="upvote(${f.id})">
+              👍 ${f.upvotes}
+            </button>
+          </div>
+        `;
+      });
+    });
+}
+
+function postFeedback() {
+  fetch(${API}/feedback, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: title.value,
+      description: desc.value,
+      category: category.value,
+      author: author.value
+    })
+  }).then(() => {
+    closeModal();
+    loadFeedback();
   });
 }
 
-function like(index) {
-  let all = JSON.parse(localStorage.getItem("data"));
-  all[index].likes++;
-  localStorage.setItem("data", JSON.stringify(all));
-  showFeedback();
+function upvote(id) {
+  fetch(${API}/feedback/${id}/upvote, { method: "POST" })
+    .then(loadFeedback);
 }
 
-showFeedback();
+loadFeedback();
