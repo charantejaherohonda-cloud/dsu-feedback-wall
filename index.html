@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>DSU Feedback Wall</title>
+  <title>DSU Feedback Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <h1>DSU Feedback Wall</h1>
-  <button class="add-btn" onclick="openModal()">+ Add Feedback</button>
-</header>
+<div class="form-box">
 
-<!-- FEEDBACK LIST -->
-<main class="container">
-  <div id="feedbackList"></div>
-</main>
+  <h1>DSU Feedback Form</h1>
+  <p class="subtitle">Help us improve campus services</p>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Submit Feedback</h2>
+  <label>Name</label>
+  <input type="text" placeholder="Enter your name">
 
-    <input id="title" placeholder="Title">
-    <textarea id="desc" placeholder="Describe the issue"></textarea>
+  <label>USN</label>
+  <input type="text" placeholder="Enter your USN">
 
-    <select id="category">
-      <option>canteen</option>
-      <option>labs</option>
-      <option>classrooms</option>
-      <option>transport</option>
-      <option>admin</option>
-    </select>
+  <label>Title</label>
+  <input type="text" placeholder="Short title of issue">
 
-    <input id="author" placeholder="Your name">
-    <button class="submit-btn" onclick="postFeedback()">Submit</button>
-  </div>
+  <label>Issue Category</label>
+  <select>
+    <option>Food Quality Issue</option>
+    <option>Management Issue</option>
+    <option>Food Service</option>
+    <option>Staff Behaviour</option>
+    <option>Drinking Water Problem</option>
+    <option>Ragging</option>
+    <option>Others</option>
+  </select>
+
+  <label>Description</label>
+  <textarea placeholder="Explain your issue here..."></textarea>
+
+  <button>Submit</button>
+
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>
