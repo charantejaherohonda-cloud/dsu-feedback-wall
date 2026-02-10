@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>DSU Feedback Wall</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
-
+<!-- HEADER -->
+<header class="header">
   <h1>DSU Feedback Wall</h1>
+  <button class="add-btn" onclick="openModal()">+ Add Feedback</button>
+</header>
 
-  <h2>Post Feedback</h2>
+<!-- FEEDBACK LIST -->
+<main class="container">
+  <div id="feedbackList"></div>
+</main>
 
-  <input id="name" placeholder="Your Name">
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Submit Feedback</h2>
 
-  <select id="category">
-    <option>Canteen</option>
-    <option>Labs</option>
-    <option>Classrooms</option>
-    <option>Transport</option>
-    <option>Admin</option>
-  </select>
+    <input id="title" placeholder="Title">
+    <textarea id="desc" placeholder="Describe the issue"></textarea>
 
-  <textarea id="message" placeholder="Write feedback"></textarea>
+    <select id="category">
+      <option>canteen</option>
+      <option>labs</option>
+      <option>classrooms</option>
+      <option>transport</option>
+      <option>admin</option>
+    </select>
 
-  <button onclick="addFeedback()">Submit</button>
-
-  <h2>Feedback Wall</h2>
-  <div id="wall"></div>
-
+    <input id="author" placeholder="Your name">
+    <button class="submit-btn" onclick="postFeedback()">Submit</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
