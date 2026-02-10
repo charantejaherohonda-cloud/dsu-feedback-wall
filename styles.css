@@ -27,4 +27,19 @@ function showFeedback() {
     wall.innerHTML += `
       <div class="card">
         <b>${f.category}</b><br>
-        ${f.mess…
+        ${f.message}<br>
+        <small>- ${f.name || "Anonymous"}</small><br>
+        <button onclick="like(${i})">👍 ${f.likes}</button>
+      </div>
+    `;
+  });
+}
+
+function like(index) {
+  let all = JSON.parse(localStorage.getItem("data"));
+  all[index].likes++;
+  localStorage.setItem("data", JSON.stringify(all));
+  showFeedback();
+}
+
+showFeedback();
