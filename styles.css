@@ -1,59 +1,33 @@
-const API = "http://localhost:5000";
+function submitForm() {
 
-function openModal() {
-  document.getElementById("modal").style.display = "block";
+  let name = document.getElementById("name").value;
+  let usn = document.getElementById("usn").value;
+  let title = document.getElementById("title").value;
+  let category = document.getElementById("category").value;
+  let description = document.getElementById("description").value;
+
+  if (name === "" || usn === "" || description === "") {
+    alert("Please fill all required fields!");
+    return;
+  }
+
+  let formData = {
+    name,
+    usn,
+    title,
+    category,
+    description
+  };
+
+  let allForms = JSON.parse(localStorage.getItem("forms")) || [];
+  allForms.push(formData);
+  localStorage.setItem("forms", JSON.stringify(allForms));
+
+  alert("Feedback Submitted Successfully!");
+
+  // Clear fields
+  document.getElementById("name").value = "";
+  document.getElementById("usn").value = "";
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
 }
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-
-function loadFeedback() {
-  fetch(${API}/feedback)
-    .then(res => res.json())
-    .then(data => {
-      const list = document.getElementById("feedbackList");
-      list.innerHTML = "";
-
-      data.forEach(f => {
-        list.innerHTML += `
-          <div class="card">
-            <h3>${f.title}</h3>
-            <p>${f.description}</p>
-
-            <div class="meta">
-              <span class="badge">${f.category}</span>
-              <span class="badge status">${f.status}</span>
-            </div>
-
-            <button class="upvote" onclick="upvote(${f.id})">
-              👍 ${f.upvotes}
-            </button>
-          </div>
-        `;
-      });
-    });
-}
-
-function postFeedback() {
-  fetch(${API}/feedback, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      title: title.value,
-      description: desc.value,
-      category: category.value,
-      author: author.value
-    })
-  }).then(() => {
-    closeModal();
-    loadFeedback();
-  });
-}
-
-function upvote(id) {
-  fetch(${API}/feedback/${id}/upvote, { method: "POST" })
-    .then(loadFeedback);
-}
-
-loadFeedback();
