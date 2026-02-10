@@ -2,29 +2,37 @@
 <html>
 <head>
   <title>DSU Feedback Wall</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<h1>DSU Feedback Wall</h1>
+<div class="container">
 
-<h2>Post Feedback</h2>
-<input id="name" placeholder="Your Name"><br>
+  <h1>DSU Feedback Wall</h1>
 
-<select id="category">
-  <option>Canteen</option>
-  <option>Labs</option>
-  <option>Classrooms</option>
-  <option>Transport</option>
-  <option>Admin</option>
-</select><br>
+  <h2>Post Feedback</h2>
 
-<textarea id="message" placeholder="Write feedback"></textarea><br>
-<button onclick="addFeedback()">Submit</button>
+  <input id="name" placeholder="Your Name">
 
-<h2>Feedback Wall</h2>
-<div id="wall"></div>
+  <select id="category">
+    <option>Canteen</option>
+    <option>Labs</option>
+    <option>Classrooms</option>
+    <option>Transport</option>
+    <option>Admin</option>
+  </select>
+
+  <textarea id="message" placeholder="Write feedback"></textarea>
+
+  <button onclick="addFeedback()">Submit</button>
+
+  <h2>Feedback Wall</h2>
+  <div id="wall"></div>
+
+</div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
