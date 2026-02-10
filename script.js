@@ -1,124 +1,63 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
-
 body {
-  background: #f5f5f5;
-  color: #111;
-}
-
-/* HEADER */
-.header {
-  background: #111;
-  color: white;
-  padding: 20px 40px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0ebf8; /* Google form light purple */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
-.add-btn {
-  background: white;
-  color: black;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.add-btn:hover {
-  background: #ddd;
-}
-
-/* MAIN */
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-}
-
-/* FEEDBACK CARD */
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-.card h3 {
-  margin-bottom: 6px;
-}
-
-.meta {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.badge {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  background: #eee;
-}
-
-.status {
-  background: #111;
-  color: white;
-}
-
-.upvote {
-  margin-top: 10px;
-  border: none;
-  background: #111;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-}
-
-.modal-content {
+.form-box {
   background: white;
   width: 400px;
   padding: 25px;
-  margin: 80px auto;
-  border-radius: 8px;
-  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
 
-.modal-content input,
-.modal-content textarea,
-.modal-content select {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 8px;
+h1 {
+  text-align: center;
+  margin-bottom: 5px;
 }
 
-.submit-btn {
+.subtitle {
+  text-align: center;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+input, select, textarea {
   width: 100%;
-  background: #111;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  height: 90px;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background: #673ab7;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 6px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.close {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 22px;
-  cursor: pointer;
+button:hover {
+  background: #5a2ea6;
 }
